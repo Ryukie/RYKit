@@ -1,2 +1,9 @@
+# Uncomment this line to define a global platform for your project
+# run: pod install --no-repo-update
+
 platform :ios, '8.0'
-pod 'Masonry'
+
+# 工程不显示任何警告
+inhibit_all_warnings!
+
+# pod 'Masonry', '~> 1.0.2'

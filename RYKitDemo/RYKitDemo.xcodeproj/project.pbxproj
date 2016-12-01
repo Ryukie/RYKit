@@ -15,6 +15,7 @@
 		A438FC131DF0294D00D0D4FE /* RYFoundationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */; };
 		A438FC141DF0294D00D0D4FE /* RYFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */; };
 		A438FC151DF0294D00D0D4FE /* RYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC121DF0294D00D0D4FE /* RYUIController.m */; };
+		A438FC171DF029F700D0D4FE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A438FC161DF029F700D0D4FE /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFunctionController.m; sourceTree = "<group>"; };
 		A438FC111DF0294D00D0D4FE /* RYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYUIController.h; sourceTree = "<group>"; };
 		A438FC121DF0294D00D0D4FE /* RYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYUIController.m; sourceTree = "<group>"; };
+		A438FC161DF029F700D0D4FE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 				A438FC091DF0294D00D0D4FE /* RYKit */,
 				A438FBD81DF0188600D0D4FE /* RYKitDemo */,
 				A438FBD71DF0188600D0D4FE /* Products */,
+				A438FC161DF029F700D0D4FE /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A438FC171DF029F700D0D4FE /* Podfile in Resources */,
 				A438FBE91DF0188600D0D4FE /* LaunchScreen.storyboard in Resources */,
 				A438FBE61DF0188600D0D4FE /* Assets.xcassets in Resources */,
 			);
