@@ -12,9 +12,9 @@
 		A438FBE11DF0188600D0D4FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FBE01DF0188600D0D4FE /* ViewController.m */; };
 		A438FBE61DF0188600D0D4FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A438FBE51DF0188600D0D4FE /* Assets.xcassets */; };
 		A438FBE91DF0188600D0D4FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A438FBE71DF0188600D0D4FE /* LaunchScreen.storyboard */; };
-		A438FBF51DF01CA400D0D4FE /* RYFoundationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FBF41DF01CA400D0D4FE /* RYFoundationController.m */; };
-		A438FBF81DF01CB800D0D4FE /* RYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FBF71DF01CB800D0D4FE /* RYUIController.m */; };
-		A438FBFB1DF01CC900D0D4FE /* RYFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FBFA1DF01CC900D0D4FE /* RYFunctionController.m */; };
+		A438FC131DF0294D00D0D4FE /* RYFoundationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */; };
+		A438FC141DF0294D00D0D4FE /* RYFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */; };
+		A438FC151DF0294D00D0D4FE /* RYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC121DF0294D00D0D4FE /* RYUIController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +27,12 @@
 		A438FBE51DF0188600D0D4FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A438FBE81DF0188600D0D4FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A438FBEA1DF0188600D0D4FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A438FBF31DF01CA400D0D4FE /* RYFoundationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFoundationController.h; sourceTree = "<group>"; };
-		A438FBF41DF01CA400D0D4FE /* RYFoundationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFoundationController.m; sourceTree = "<group>"; };
-		A438FBF61DF01CB800D0D4FE /* RYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYUIController.h; sourceTree = "<group>"; };
-		A438FBF71DF01CB800D0D4FE /* RYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYUIController.m; sourceTree = "<group>"; };
-		A438FBF91DF01CC900D0D4FE /* RYFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFunctionController.h; sourceTree = "<group>"; };
-		A438FBFA1DF01CC900D0D4FE /* RYFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFunctionController.m; sourceTree = "<group>"; };
+		A438FC0B1DF0294D00D0D4FE /* RYFoundationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFoundationController.h; sourceTree = "<group>"; };
+		A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFoundationController.m; sourceTree = "<group>"; };
+		A438FC0E1DF0294D00D0D4FE /* RYFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFunctionController.h; sourceTree = "<group>"; };
+		A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFunctionController.m; sourceTree = "<group>"; };
+		A438FC111DF0294D00D0D4FE /* RYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYUIController.h; sourceTree = "<group>"; };
+		A438FC121DF0294D00D0D4FE /* RYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYUIController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +49,7 @@
 		A438FBCD1DF0188600D0D4FE = {
 			isa = PBXGroup;
 			children = (
+				A438FC091DF0294D00D0D4FE /* RYKit */,
 				A438FBD81DF0188600D0D4FE /* RYKitDemo */,
 				A438FBD71DF0188600D0D4FE /* Products */,
 			);
@@ -65,9 +66,6 @@
 		A438FBD81DF0188600D0D4FE /* RYKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A438FBF01DF01C5C00D0D4FE /* Foundation */,
-				A438FBF11DF01C5C00D0D4FE /* UI */,
-				A438FBF21DF01C5C00D0D4FE /* Function */,
 				A438FBDC1DF0188600D0D4FE /* AppDelegate.h */,
 				A438FBDD1DF0188600D0D4FE /* AppDelegate.m */,
 				A438FBDF1DF0188600D0D4FE /* ViewController.h */,
@@ -88,31 +86,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A438FBF01DF01C5C00D0D4FE /* Foundation */ = {
+		A438FC091DF0294D00D0D4FE /* RYKit */ = {
 			isa = PBXGroup;
 			children = (
-				A438FBF31DF01CA400D0D4FE /* RYFoundationController.h */,
-				A438FBF41DF01CA400D0D4FE /* RYFoundationController.m */,
+				A438FC0A1DF0294D00D0D4FE /* Foundation */,
+				A438FC0D1DF0294D00D0D4FE /* Function */,
+				A438FC101DF0294D00D0D4FE /* UI */,
+			);
+			name = RYKit;
+			path = ../RYKit;
+			sourceTree = "<group>";
+		};
+		A438FC0A1DF0294D00D0D4FE /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				A438FC0B1DF0294D00D0D4FE /* RYFoundationController.h */,
+				A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
 		};
-		A438FBF11DF01C5C00D0D4FE /* UI */ = {
+		A438FC0D1DF0294D00D0D4FE /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				A438FBF61DF01CB800D0D4FE /* RYUIController.h */,
-				A438FBF71DF01CB800D0D4FE /* RYUIController.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		A438FBF21DF01C5C00D0D4FE /* Function */ = {
-			isa = PBXGroup;
-			children = (
-				A438FBF91DF01CC900D0D4FE /* RYFunctionController.h */,
-				A438FBFA1DF01CC900D0D4FE /* RYFunctionController.m */,
+				A438FC0E1DF0294D00D0D4FE /* RYFunctionController.h */,
+				A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */,
 			);
 			path = Function;
+			sourceTree = "<group>";
+		};
+		A438FC101DF0294D00D0D4FE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A438FC111DF0294D00D0D4FE /* RYUIController.h */,
+				A438FC121DF0294D00D0D4FE /* RYUIController.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A438FBE11DF0188600D0D4FE /* ViewController.m in Sources */,
-				A438FBF51DF01CA400D0D4FE /* RYFoundationController.m in Sources */,
-				A438FBFB1DF01CC900D0D4FE /* RYFunctionController.m in Sources */,
+				A438FC131DF0294D00D0D4FE /* RYFoundationController.m in Sources */,
+				A438FC151DF0294D00D0D4FE /* RYUIController.m in Sources */,
 				A438FBDE1DF0188600D0D4FE /* AppDelegate.m in Sources */,
-				A438FBF81DF01CB800D0D4FE /* RYUIController.m in Sources */,
 				A438FBDB1DF0188600D0D4FE /* main.m in Sources */,
+				A438FC141DF0294D00D0D4FE /* RYFunctionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +350,7 @@
 				A438FBEF1DF0188600D0D4FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
