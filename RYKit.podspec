@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.name         = "RYKit"
   s.version      = "0.0.1"
-  s.summary      = “Collection of Ryukie’s”
+  s.summary      = "Collection of Ryukie’s"
 
   s.description  = <<-DESC
                    DESC
