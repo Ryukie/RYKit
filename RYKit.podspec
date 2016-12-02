@@ -12,9 +12,6 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "Collection of Ryukie’s"
 
-  s.description  = <<-DESC
-                   DESC
-
   s.homepage     = "https://github.com/Ryukie/RYKit.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
@@ -26,10 +23,9 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/Ryukie/RYKit.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/Ryukie/RYKit.git", :tag => "test0.0.1" }
 
-  s.source_files  = "RYKit", "Classes/**/*.{h,m}"
-  s.exclude_files = "RYKit/Exclude"
+  s.source_files  = "RYKit", "RYKit/**/*.{h,m}"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -51,9 +47,10 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+  s.dependency "Masonry", "~> 1.0.2"
 
 end

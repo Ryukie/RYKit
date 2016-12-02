@@ -12,10 +12,10 @@
 		A438FBE11DF0188600D0D4FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FBE01DF0188600D0D4FE /* ViewController.m */; };
 		A438FBE61DF0188600D0D4FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A438FBE51DF0188600D0D4FE /* Assets.xcassets */; };
 		A438FBE91DF0188600D0D4FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A438FBE71DF0188600D0D4FE /* LaunchScreen.storyboard */; };
-		A438FC131DF0294D00D0D4FE /* RYFoundationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */; };
-		A438FC141DF0294D00D0D4FE /* RYFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */; };
-		A438FC151DF0294D00D0D4FE /* RYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = A438FC121DF0294D00D0D4FE /* RYUIController.m */; };
-		A438FC171DF029F700D0D4FE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A438FC161DF029F700D0D4FE /* Podfile */; };
+		A4BE50621DF106D1009BE7A3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A4BE50611DF106D1009BE7A3 /* Podfile */; };
+		A4BE506C1DF107EF009BE7A3 /* RYFoundationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BE50651DF107EE009BE7A3 /* RYFoundationController.m */; };
+		A4BE506D1DF107EF009BE7A3 /* RYFunctionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BE50681DF107EF009BE7A3 /* RYFunctionController.m */; };
+		A4BE506E1DF107EF009BE7A3 /* RYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BE506B1DF107EF009BE7A3 /* RYUIController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +28,13 @@
 		A438FBE51DF0188600D0D4FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A438FBE81DF0188600D0D4FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A438FBEA1DF0188600D0D4FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A438FC0B1DF0294D00D0D4FE /* RYFoundationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFoundationController.h; sourceTree = "<group>"; };
-		A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFoundationController.m; sourceTree = "<group>"; };
-		A438FC0E1DF0294D00D0D4FE /* RYFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFunctionController.h; sourceTree = "<group>"; };
-		A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFunctionController.m; sourceTree = "<group>"; };
-		A438FC111DF0294D00D0D4FE /* RYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYUIController.h; sourceTree = "<group>"; };
-		A438FC121DF0294D00D0D4FE /* RYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYUIController.m; sourceTree = "<group>"; };
-		A438FC161DF029F700D0D4FE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
+		A4BE50611DF106D1009BE7A3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A4BE50641DF107EE009BE7A3 /* RYFoundationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFoundationController.h; sourceTree = "<group>"; };
+		A4BE50651DF107EE009BE7A3 /* RYFoundationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFoundationController.m; sourceTree = "<group>"; };
+		A4BE50671DF107EF009BE7A3 /* RYFunctionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYFunctionController.h; sourceTree = "<group>"; };
+		A4BE50681DF107EF009BE7A3 /* RYFunctionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYFunctionController.m; sourceTree = "<group>"; };
+		A4BE506A1DF107EF009BE7A3 /* RYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYUIController.h; sourceTree = "<group>"; };
+		A4BE506B1DF107EF009BE7A3 /* RYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYUIController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +51,10 @@
 		A438FBCD1DF0188600D0D4FE = {
 			isa = PBXGroup;
 			children = (
-				A438FC091DF0294D00D0D4FE /* RYKit */,
+				A4BE506F1DF10822009BE7A3 /* RYKit */,
 				A438FBD81DF0188600D0D4FE /* RYKitDemo */,
 				A438FBD71DF0188600D0D4FE /* Products */,
-				A438FC161DF029F700D0D4FE /* Podfile */,
+				A4BE50611DF106D1009BE7A3 /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +69,9 @@
 		A438FBD81DF0188600D0D4FE /* RYKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A4BE50631DF107EE009BE7A3 /* Foundation */,
+				A4BE50661DF107EE009BE7A3 /* Function */,
+				A4BE50691DF107EF009BE7A3 /* UI */,
 				A438FBDC1DF0188600D0D4FE /* AppDelegate.h */,
 				A438FBDD1DF0188600D0D4FE /* AppDelegate.m */,
 				A438FBDF1DF0188600D0D4FE /* ViewController.h */,
@@ -89,40 +92,61 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A438FC091DF0294D00D0D4FE /* RYKit */ = {
+		A4BE50631DF107EE009BE7A3 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				A438FC0A1DF0294D00D0D4FE /* Foundation */,
-				A438FC0D1DF0294D00D0D4FE /* Function */,
-				A438FC101DF0294D00D0D4FE /* UI */,
+				A4BE50641DF107EE009BE7A3 /* RYFoundationController.h */,
+				A4BE50651DF107EE009BE7A3 /* RYFoundationController.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		A4BE50661DF107EE009BE7A3 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				A4BE50671DF107EF009BE7A3 /* RYFunctionController.h */,
+				A4BE50681DF107EF009BE7A3 /* RYFunctionController.m */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		A4BE50691DF107EF009BE7A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A4BE506A1DF107EF009BE7A3 /* RYUIController.h */,
+				A4BE506B1DF107EF009BE7A3 /* RYUIController.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A4BE506F1DF10822009BE7A3 /* RYKit */ = {
+			isa = PBXGroup;
+			children = (
+				A4BE50701DF10822009BE7A3 /* Foundation */,
+				A4BE50711DF10822009BE7A3 /* Function */,
+				A4BE50721DF10822009BE7A3 /* UI */,
 			);
 			name = RYKit;
 			path = ../RYKit;
 			sourceTree = "<group>";
 		};
-		A438FC0A1DF0294D00D0D4FE /* Foundation */ = {
+		A4BE50701DF10822009BE7A3 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				A438FC0B1DF0294D00D0D4FE /* RYFoundationController.h */,
-				A438FC0C1DF0294D00D0D4FE /* RYFoundationController.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
 		};
-		A438FC0D1DF0294D00D0D4FE /* Function */ = {
+		A4BE50711DF10822009BE7A3 /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				A438FC0E1DF0294D00D0D4FE /* RYFunctionController.h */,
-				A438FC0F1DF0294D00D0D4FE /* RYFunctionController.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
 		};
-		A438FC101DF0294D00D0D4FE /* UI */ = {
+		A4BE50721DF10822009BE7A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A438FC111DF0294D00D0D4FE /* RYUIController.h */,
-				A438FC121DF0294D00D0D4FE /* RYUIController.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -187,7 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A438FC171DF029F700D0D4FE /* Podfile in Resources */,
+				A4BE50621DF106D1009BE7A3 /* Podfile in Resources */,
 				A438FBE91DF0188600D0D4FE /* LaunchScreen.storyboard in Resources */,
 				A438FBE61DF0188600D0D4FE /* Assets.xcassets in Resources */,
 			);
@@ -201,11 +225,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A438FBE11DF0188600D0D4FE /* ViewController.m in Sources */,
-				A438FC131DF0294D00D0D4FE /* RYFoundationController.m in Sources */,
-				A438FC151DF0294D00D0D4FE /* RYUIController.m in Sources */,
+				A4BE506C1DF107EF009BE7A3 /* RYFoundationController.m in Sources */,
+				A4BE506E1DF107EF009BE7A3 /* RYUIController.m in Sources */,
 				A438FBDE1DF0188600D0D4FE /* AppDelegate.m in Sources */,
 				A438FBDB1DF0188600D0D4FE /* main.m in Sources */,
-				A438FC141DF0294D00D0D4FE /* RYFunctionController.m in Sources */,
+				A4BE506D1DF107EF009BE7A3 /* RYFunctionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
