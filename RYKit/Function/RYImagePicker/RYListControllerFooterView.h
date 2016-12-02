@@ -1,9 +1,9 @@
 //
 //  RYListControllerFooterView.h
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/14.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,9 +1,9 @@
 //
 //  RYPHAssetPlayController.m
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import "RYPHAssetPlayController.h"
@@ -60,7 +60,7 @@
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        [self.scrollView updateZoomScalesAndZoom:YES];
+//        [self.scrollView updateZoomScalesAndZoom:YES];
     } completion:nil];
 }
 

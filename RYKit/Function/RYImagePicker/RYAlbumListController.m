@@ -116,6 +116,11 @@ static NSString *reuseID = @"HeheCell";
     [self.cvImages reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 #pragma mark - Noti
 - (void)addNotificationOb {
     //监听点击完成按钮的通知

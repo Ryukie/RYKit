@@ -1,9 +1,9 @@
 //
 //  RYImageScrollView.h
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -24,7 +24,5 @@ extern NSString * const RYAssetScrollViewPlayerWillPauseNotification;
 @property (nonatomic, strong) RYGridCellModel *cellModel;
 
 - (void)bind:(PHAsset *)asset image:(UIImage *)image requestInfo:(NSDictionary *)info;
-
-- (void)updateZoomScalesAndZoom:(BOOL)zoom;
 
 @end

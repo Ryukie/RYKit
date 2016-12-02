@@ -112,7 +112,7 @@
 - (UIButton *)btRedPoint {
     if (!_btRedPoint) {
         _btRedPoint = [[UIButton alloc] init];
-        [_btRedPoint setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_file_select"] forState:UIControlStateNormal];
+        [_btRedPoint setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_file_select"] forState:UIControlStateNormal];
     }
     return _btRedPoint;
 }

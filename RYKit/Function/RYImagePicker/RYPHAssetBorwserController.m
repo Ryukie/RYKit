@@ -1,9 +1,9 @@
 //
 //  RYPHAssetBorwserController.m
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import "RYPHAssetBorwserController.h"
@@ -73,12 +73,36 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     //隐藏导航栏状态栏
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    if (![self checkSystemVersionIsNineLater]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    }
+    else {
+        [self prefersStatusBarHidden];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    if (![self checkSystemVersionIsNineLater]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    }
+    else {
+        [self prefersStatusBarHidden];
+    }
+}
+
+- (BOOL)checkSystemVersionIsNineLater {
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    float versionFloat = version.floatValue;
+    if (versionFloat >= 9) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)prefersStatusBarHidden {//>=iOS9
+    return YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -106,11 +130,11 @@
     
     //设置是否选择 及序号
     if (cellModel.isSelected) {
-        [self.footer.btCommit setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_preview_select"] forState:UIControlStateNormal];
+        [self.footer.btCommit setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_preview_select"] forState:UIControlStateNormal];
         [self.footer.btCommit setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         self.footer.lbCurrentOrder.text = [NSString stringWithFormat:@"%ld",cellModel.orderIndex+1];
     } else {
-        [self.footer.btCommit setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
+        [self.footer.btCommit setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
         [self.footer.btCommit setTitleColor:[UIColor colorWithWhite:0.4 alpha:1.f] forState:UIControlStateNormal];
         self.footer.lbCurrentOrder.text = @"";
     }
@@ -119,7 +143,7 @@
     
     //设置原图大小
     if ([RYImagePicker sharedInstance].isShowOrImageSize && cellModel.asset.mediaType == PHAssetMediaTypeImage) {
-        [self.footer.btSee setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_original_select"] forState:UIControlStateNormal];
+        [self.footer.btSee setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_original_select"] forState:UIControlStateNormal];
         [self.footer.btSee setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         __weak typeof(self) weakSelf = self;
@@ -135,7 +159,7 @@
         }];
         
     } else {
-        [self.footer.btSee setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
+        [self.footer.btSee setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
         [self.footer.btSee setTitleColor:[UIColor colorWithWhite:0.4 alpha:1.f] forState:UIControlStateNormal];
         [self.footer.btSee setTitle:@"  原图" forState:UIControlStateNormal];
     }

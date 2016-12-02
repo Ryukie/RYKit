@@ -1,9 +1,9 @@
 //
 //  RYPHAssetPlayViewFooterView.m
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import "RYPHAssetPlayViewFooterView.h"
@@ -29,14 +29,14 @@
     self.btSee.titleLabel.font = [UIFont systemFontOfSize:13];
     self.btSee.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.btSee setTitleColor:[UIColor colorWithWhite:0.4 alpha:1.f] forState:UIControlStateNormal];
-    [self.btSee setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
+    [self.btSee setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
     [self.btSee setTitle:@"  原图" forState:UIControlStateNormal];
     [self.btSee addTarget:self action:@selector(seeClick) forControlEvents:UIControlEventTouchUpInside];
     
     self.btCommit = [[UIButton alloc] init];
     self.btCommit.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.btCommit setTitleColor:[UIColor colorWithWhite:0.4 alpha:1.f] forState:UIControlStateNormal];
-    [self.btCommit setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
+    [self.btCommit setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_original_default"] forState:UIControlStateNormal];
     [self.btCommit setTitle:@"  选择" forState:UIControlStateNormal];
     [self.btCommit addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
     

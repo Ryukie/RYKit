@@ -74,7 +74,7 @@
         _bt_select = [[UIButton alloc] init];
         _bt_select.titleLabel.adjustsFontSizeToFitWidth = YES;
         [_bt_select setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_bt_select setBackgroundImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_default"] forState:UIControlStateNormal];
+        [_bt_select setBackgroundImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_default"] forState:UIControlStateNormal];
     }
     return _bt_select;
 }
@@ -83,9 +83,9 @@
     _cellModel = cellModel;
     
     if (!cellModel.isSelected) {
-        [_bt_select setBackgroundImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_default"] forState:UIControlStateNormal];
+        [_bt_select setBackgroundImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_default"] forState:UIControlStateNormal];
     } else {
-        [_bt_select setBackgroundImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/album_select"] forState:UIControlStateNormal];
+        [_bt_select setBackgroundImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/album_select"] forState:UIControlStateNormal];
     }
     
     PHAsset *asset = _cellModel.asset;

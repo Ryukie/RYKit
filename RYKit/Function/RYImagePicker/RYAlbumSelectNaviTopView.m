@@ -53,9 +53,9 @@
 - (void)setIsShowed:(BOOL)isShowed {
     _isShowed = isShowed;
     if (isShowed) {
-        self.ivArrow.image = [UIImage imageNamed:@"BFPhotosPickerManager.bundle/icon_arrow_up_gray"];
+        self.ivArrow.image = [UIImage imageNamed:@"RYPhotosPickerManager.bundle/icon_arrow_up_gray"];
     } else {
-        self.ivArrow.image = [UIImage imageNamed:@"BFPhotosPickerManager.bundle/icon_arrow_down_gray"];
+        self.ivArrow.image = [UIImage imageNamed:@"RYPhotosPickerManager.bundle/icon_arrow_down_gray"];
     }
 }
 
@@ -81,7 +81,7 @@
 - (UIImageView *)ivArrow {
     if (!_ivArrow) {
         _ivArrow = [[UIImageView alloc] init];
-        _ivArrow.image = [UIImage imageNamed:@"BFPhotosPickerManager.bundle/icon_arrow_down_gray"];
+        _ivArrow.image = [UIImage imageNamed:@"RYPhotosPickerManager.bundle/icon_arrow_down_gray"];
     }
     return _ivArrow;
 }

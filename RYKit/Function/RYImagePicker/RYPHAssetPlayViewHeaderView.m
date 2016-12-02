@@ -1,9 +1,9 @@
 //
 //  RYPHAssetPlayViewHeaderView.m
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import "RYPHAssetPlayViewHeaderView.h"
@@ -28,7 +28,7 @@
     
     //返回按钮
     self.btBack = [[UIButton alloc] init];
-    [self.btBack setImage:[UIImage imageNamed:@"BFPhotosPickerManager.bundle/title_icon_return"] forState:UIControlStateNormal];
+    [self.btBack setImage:[UIImage imageNamed:@"RYPhotosPickerManager.bundle/title_icon_return"] forState:UIControlStateNormal];
     
     //确认按钮
     self.btSelect = [[UIButton alloc] init];

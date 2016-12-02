@@ -1,9 +1,9 @@
 //
 //  RYImageScrollView.m
-//  BigFan
+//  RYimagePickerDemo
 //
-//  Created by RongqingWang on 16/10/13.
-//  Copyright © 2016年 QuanYan. All rights reserved.
+//  Created by RongqingWang on 16/5/6.
+//  Copyright © 2016年 RongqingWang. All rights reserved.
 //
 
 #import "RYImageScrollView.h"
@@ -17,8 +17,8 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
 
 @property (nonatomic, assign) BOOL didLoadPlayerItem;
 @property (nonatomic, assign) BOOL isPlaying;
-@property (nonatomic, assign) BOOL shouldUpdateConstraints;
 @property (nonatomic, assign) BOOL didSetupConstraints;
+@property (nonatomic, assign) CGFloat maximumDoubleTapZoomScale;
 @property (nonatomic, assign) CGFloat perspectiveZoomScale;
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
@@ -33,12 +33,12 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
     self = [super initWithFrame:frame];
     
     if (self) {
-        _shouldUpdateConstraints = YES;
         self.allowsSelection = NO;
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.bouncesZoom = YES;
         self.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.delegate = self;
         
         [self setUpUI];
@@ -64,25 +64,6 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
     
 }
 
-#pragma mark - Update auto layout constraints
-- (void)updateConstraints {
-    [self updateContentFrame];
-    [super updateConstraints];
-}
-
-- (void)updateContentFrame {
-    CGSize boundsSize = self.bounds.size;
-    
-    CGFloat w = self.zoomScale * self.asset.pixelWidth;
-    CGFloat h = self.zoomScale * self.asset.pixelHeight;
-    
-    CGFloat dx = (boundsSize.width - w) / 2.0;
-    CGFloat dy = (boundsSize.height - h) / 2.0;
-    
-    self.contentOffset = CGPointZero;
-    self.imageView.frame = CGRectMake(dx, dy, w, h);
-}
-
 #pragma mark - Bind asset image
 - (void)bind:(PHAsset *)asset image:(UIImage *)image requestInfo:(NSDictionary *)info {
     self.asset = asset;
@@ -91,13 +72,28 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
     BOOL isDegraded = [info[PHImageResultIsDegradedKey] boolValue];
     
     if (self.image == nil || !isDegraded) {
-        BOOL zoom = (!self.image);
-        self.image = image;
+        // Reset
+        self.maximumZoomScale = 1;
+        self.minimumZoomScale = 1;
+        self.zoomScale = 1;
+        
+        self.contentSize = CGSizeMake(0, 0);
+        
         self.imageView.image = image;
         
-        [self setNeedsUpdateConstraints];
-        [self updateConstraintsIfNeeded];
-        [self updateZoomScalesAndZoom:zoom];
+        // 设置size
+        CGRect photoImageViewFrame;
+        photoImageViewFrame.origin = CGPointZero;
+        photoImageViewFrame.size = [self assetSize];
+        
+        self.imageView.frame = photoImageViewFrame;
+        self.contentSize = photoImageViewFrame.size;
+        
+        // 缩放到最小
+        [self setMaxMinZoomScalesForCurrentBounds];
+        
+        [self setNeedsLayout];
+        
     }
 }
 
@@ -120,7 +116,6 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     return YES;
 }
-
 
 #pragma mark - Handle tappings
 - (void)handleTapping:(UITapGestureRecognizer *)recognizer {
@@ -187,149 +182,120 @@ NSString * const RYAssetScrollViewPlayerWillPauseNotification = @"RYAssetScrollV
     return self.imageView;
 }
 
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
-    self.shouldUpdateConstraints = YES;
-}
-
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    [self setScrollEnabled:(self.zoomScale != self.perspectiveZoomScale)];
-    
-    if (self.shouldUpdateConstraints) {
-        [self setNeedsUpdateConstraints];
-        [self updateConstraintsIfNeeded];
-    }
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 #pragma mark - Zoom with gesture recognizer
 - (void)zoomWithGestureRecognizer:(UITapGestureRecognizer *)recognizer {
-    if (self.minimumZoomScale == self.maximumZoomScale)
-        return;
+    CGPoint touchPoint = [recognizer locationInView:self];
     
-    if ([self canPerspectiveZoom]) {
-        if ((self.zoomScale >= self.minimumZoomScale && self.zoomScale < self.perspectiveZoomScale) ||
-            (self.zoomScale <= self.maximumZoomScale && self.zoomScale > self.perspectiveZoomScale))
-            [self zoomToPerspectiveZoomScaleAnimated:YES];
-        else
-            [self zoomToMaximumZoomScaleWithGestureRecognizer:recognizer];
-        
-        return;
-    }
+    //保证 plus上的缩放效果一致
+    touchPoint.x = touchPoint.x * [UIScreen mainScreen].scale;
+    touchPoint.y = touchPoint.y * [UIScreen mainScreen].scale;
     
-    //某些分辨率的图片   放大后双击还原出现异常   通过改变减小精度来确保没问题
-    /**
-     放大状态到缩小状态时的比例...
-     (lldb) po self.zoomScale
-     0.7961538461538461
-     (lldb) po self.maximumZoomScale
-     0.79615384615384621
-     */
-    if ((float)self.zoomScale < (float)self.maximumZoomScale)
-        [self zoomToMaximumZoomScaleWithGestureRecognizer:recognizer];
-    else
-        [self zoomToMinimumZoomScaleAnimated:YES];
-}
-
-- (CGRect)zoomRectWithScale:(CGFloat)scale withCenter:(CGPoint)center {
-    center = [self.imageView convertPoint:center fromView:self];
+    // 取消当前所有target为self.imageview的操作
+    [NSObject cancelPreviousPerformRequestsWithTarget:self.imageView];
     
-    CGRect zoomRect;
-    
-    zoomRect.size.height = self.imageView.frame.size.height / scale;
-    zoomRect.size.width  = self.imageView.frame.size.width  / scale;
-    
-    zoomRect.origin.x    = center.x - ((zoomRect.size.width / 2.0));
-    zoomRect.origin.y    = center.y - ((zoomRect.size.height / 2.0));
-    
-    return zoomRect;
-}
-
-#pragma mark - Zoom
-- (void)zoomToInitialScale {
-    if ([self canPerspectiveZoom]) {
-        [self zoomToPerspectiveZoomScaleAnimated:NO];
-    }
-    else {
-        [self zoomToMinimumZoomScaleAnimated:NO];
+    // Zoom
+    if (self.zoomScale == self.maximumZoomScale) {
+        //缩小
+        [self setZoomScale:self.minimumZoomScale animated:YES];
+    } else {
+        //放大
+        CGSize targetSize = CGSizeMake(self.frame.size.width / self.maximumDoubleTapZoomScale, self.frame.size.height / self.maximumDoubleTapZoomScale);
+        CGPoint targetPoint = CGPointMake(touchPoint.x - targetSize.width / 2, touchPoint.y - targetSize.height / 2);
+        [self zoomToRect:CGRectMake(touchPoint.x, touchPoint.y, 1, 1) animated:YES];
     }
 }
 
-- (void)zoomToMinimumZoomScaleAnimated:(BOOL)animated {
-    [self setZoomScale:self.minimumZoomScale animated:animated];
-}
-
-- (void)zoomToMaximumZoomScaleWithGestureRecognizer:(UITapGestureRecognizer *)recognizer {
-    CGRect zoomRect = [self zoomRectWithScale:self.maximumZoomScale withCenter:[recognizer locationInView:recognizer.view]];
+#pragma mark - zoom
+- (void)setMaxMinZoomScalesForCurrentBounds {
+    // Reset
+    self.maximumZoomScale = 1;
+    self.minimumZoomScale = 1;
+    self.zoomScale = 1;
     
-    self.shouldUpdateConstraints = NO;
+    if (self.imageView.image == nil) return;
     
-    [UIView animateWithDuration:0.3 animations:^{
-        [self zoomToRect:zoomRect animated:NO];
+    // Sizes
+    CGSize boundsSize = self.bounds.size;
+    boundsSize.width -= 0.1;
+    boundsSize.height -= 0.1;
+    
+    CGSize imageSize = self.imageView.frame.size;
+    
+    // 计算最小比例
+    CGFloat xScale = boundsSize.width / imageSize.width;    // 最适应图片宽度的比例
+    CGFloat yScale = boundsSize.height / imageSize.height;  // 最适应图片高度的比例
+    CGFloat minScale = MIN(xScale, yScale);                 // 用其中最小的一个来作为全屏缩放的比例
+    
+    // 如果都比屏幕小  就设置为1
+    if (xScale > 1 && yScale > 1) {
+        minScale = 1.0;
+    }
+    
+    // 计算最大比例
+    CGFloat maxScale = 4.0; // Allow double scale
+    // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
+    // maximum zoom scale to 0.5.
+    if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
+        maxScale = maxScale / [[UIScreen mainScreen] scale];
         
-        CGRect frame = self.imageView.frame;
-        frame.origin.x = 0;
-        frame.origin.y = 0;
+        if (maxScale < minScale) {
+            maxScale = minScale * 2;
+        }
+    }
+    
+    // 计算双击后的最大比例
+    CGFloat maxDoubleTapZoomScale = 4.0 * minScale; // Allow double scale
+    // on high resolution screens we have double the pixel density, so we will be seeing every pixel if we limit the
+    // maximum zoom scale to 0.5.
+    if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
+        maxDoubleTapZoomScale = maxDoubleTapZoomScale / [[UIScreen mainScreen] scale];
         
-        self.imageView.frame = frame;
-    }];
-}
-
-#pragma mark - Perspective zoom
-- (BOOL)canPerspectiveZoom {
-    CGSize assetSize    = [self assetSize];
-    CGSize boundsSize   = self.bounds.size;
+        if (maxDoubleTapZoomScale < minScale) {
+            maxDoubleTapZoomScale = minScale * 2;
+        }
+    }
     
-    CGFloat assetRatio  = assetSize.width / assetSize.height;
-    CGFloat boundsRatio = boundsSize.width / boundsSize.height;
-    
-    // can perform perspective zoom when the difference of aspect ratios is smaller than 20%
-    return (fabs( (assetRatio - boundsRatio) / boundsRatio ) < 0.2f);
-}
-
-- (void)zoomToPerspectiveZoomScaleAnimated:(BOOL)animated; {
-    CGRect zoomRect = [self zoomRectWithScale:self.perspectiveZoomScale];
-    [self zoomToRect:zoomRect animated:animated];
-}
-
-- (CGRect)zoomRectWithScale:(CGFloat)scale {
-    CGSize targetSize;
-    targetSize.width    = self.bounds.size.width / scale;
-    targetSize.height   = self.bounds.size.height / scale;
-    
-    CGPoint targetOrigin;
-    targetOrigin.x      = (self.asset.pixelWidth - targetSize.width) / 2.0;
-    targetOrigin.y      = (self.asset.pixelHeight - targetSize.height) / 2.0;
-    
-    CGRect zoomRect;
-    zoomRect.origin = targetOrigin;
-    zoomRect.size   = targetSize;
-    
-    return zoomRect;
-}
-
-#pragma mark - Upate zoom scales
-- (void)updateZoomScalesAndZoom:(BOOL)zoom {
-    if (!self.asset)
-        return;
-    
-    CGSize assetSize    = [self assetSize];
-    CGSize boundsSize   = self.bounds.size;
-    
-    CGFloat xScale = boundsSize.width / assetSize.width;    //scale needed to perfectly fit the image width-wise
-    CGFloat yScale = boundsSize.height / assetSize.height;  //scale needed to perfectly fit the image height-wise
-    
-    CGFloat minScale = MIN(xScale, yScale);
-    CGFloat maxScale = 3.0 * minScale;
-    
-    self.minimumZoomScale = minScale;
+    // Set
     self.maximumZoomScale = maxScale;
+    self.minimumZoomScale = minScale;
+    self.zoomScale = minScale;
+    self.maximumDoubleTapZoomScale = maxDoubleTapZoomScale;
     
-    // update perspective zoom scale
-    self.perspectiveZoomScale = (boundsSize.width > boundsSize.height) ? xScale : yScale;
-    
-    if (zoom)
-        [self zoomToInitialScale];
+    // Reset
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.frame.size.width, self.imageView.frame.size.height);
+    [self setNeedsLayout];
 }
 
+#pragma mark - layout
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    // 当图片比当前屏幕小的时候居中
+    CGSize boundsSize = self.bounds.size;
+    CGRect frameToCenter = self.imageView.frame;
+    
+    // H
+    if (frameToCenter.size.width < boundsSize.width) {
+        frameToCenter.origin.x = floorf((boundsSize.width - frameToCenter.size.width) / 2.0);
+    } else {
+        frameToCenter.origin.x = 0;
+    }
+    
+    // V
+    if (frameToCenter.size.height < boundsSize.height) {
+        frameToCenter.origin.y = floorf((boundsSize.height - frameToCenter.size.height) / 2.0);
+    } else {
+        frameToCenter.origin.y = 0;
+    }
+    
+    if (!CGRectEqualToRect(self.imageView.frame, frameToCenter))
+        self.imageView.frame = frameToCenter;
+}
 
 #pragma mark - asset size
 - (CGSize)assetSize {
